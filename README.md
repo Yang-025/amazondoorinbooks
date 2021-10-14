@@ -14,3 +14,13 @@ Step4. 點選左上角載入未封裝項目，選擇Step1下載的檔案
 [manifest](https://developer.chrome.com/extensions/manifest)    
 [favicon.io](https://favicon.io/emoji-favicons/star/)
 
+
+## Build
+rm -rf public
+npx babel scripts --out-dir public/scripts --presets minify
+cp manifest.json public/
+cp main.css public/
+cp -R icon public
+
+zip -r public.zip public
+
