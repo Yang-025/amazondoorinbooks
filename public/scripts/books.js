@@ -1,1 +1,0 @@
-addAmazonSearch("books");

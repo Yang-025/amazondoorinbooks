@@ -1,23 +1,20 @@
 {
-  "name": "都逛逛-網路書店評價參考",
-  "description" : "想看amazon的評價? 我幫你。 提供博客來、kobo、amazon相互參考",
-  "version": "1.0",
+  "name": "都逛逛 | 網路書評參考",
+  "description": "想看amazon的評價? 我幫你。 提供博客來、kobo、amazon 快速連結相互參考書評",
+  "version": "1.1",
   "manifest_version": 3,
   "icons": {
     "16": "./icon/icon16.png",
     "32": "./icon/icon32.png",
     "180": "./icon/icon180.png"
   },
-  "content_scripts": [
-    {
-      "matches": ["*://*.books.com.tw/*"],
-      "js": ["scripts/main.js", "scripts/books.js"],
-			"css": ["main.css"]
-    },
-    {
-      "matches": ["*://*.kobo.com/*"],
-      "js": ["scripts/main.js", "scripts/kobo.js"],
-			"css": ["main.css"]
-    }
-  ]
+  "action": {
+    "default_title": "都逛逛 | 網路書評參考",
+    "default_popup": "popup.html"
+  },
+  "permissions": ["activeTab", "scripting", "tabs", "declarativeContent"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "host_permissions": ["*://*.books.com.tw/*", "*://*.kobo.com/*"]
 }
