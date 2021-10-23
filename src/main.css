@@ -39,33 +39,17 @@
   left: 2px;
 }
 
-#changeColor {
-  height: 30px;
-  width: 30px;
-  outline: none;
-  margin: 10px;
-  border: none;
-  border-radius: 2px;
-}
-
-#changeColor.current {
-  box-shadow: 0 0 0 2px white, 0 0 0 4px black;
-}
-
-.wrapper {
+.looklook_wrapper {
   width: 180px;
   text-align: center;
-
 }
 
-.button-group {
+.looklook_button-group {
   display: flex;
   justify-content: center;
-
 }
 
-
-.button-4 {
+.looklook_button-4 {
   margin: 0 10px;
   appearance: none;
   background-color: #fafbfc;
@@ -89,38 +73,38 @@
   word-wrap: break-word;
 }
 
-.button-4:hover {
+.looklook_button-4:hover {
   background-color: #f3f4f6;
   text-decoration: none;
   transition-duration: 0.1s;
 }
 
-.button-4:disabled {
+.looklook_button-4:disabled {
   background-color: #fafbfc;
   border-color: rgba(27, 31, 35, 0.15);
   color: #959da5;
   cursor: default;
 }
 
-.button-4:active {
+.looklook_button-4:active {
   background-color: #edeff2;
   box-shadow: rgba(225, 228, 232, 0.2) 0 1px 0 inset;
   transition: none 0s;
 }
 
-.button-4:focus {
+.looklook_button-4:focus {
   outline: 1px transparent;
 }
 
-.button-4:before {
+.looklook_button-4:before {
   display: none;
 }
 
-.button-4:-webkit-details-marker {
+.looklook_button-4:-webkit-details-marker {
   display: none;
 }
 
-.button-4.on {
+.looklook_button-4.on {
   background-color: #ffb732;
   color: #ffffff;
 }

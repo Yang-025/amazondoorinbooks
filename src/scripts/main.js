@@ -99,7 +99,7 @@ function addAmazonSearch(bookstore) {
 
   if (bookstore === "kobo") {
     tagList = tagList.filter((x) => x !== "kobo");
-    bookTitleSection = document.querySelector(".item-info");
+    bookTitleSection = document.querySelector(".support.title-widget .item-info");
     if (!bookTitleSection) {
       return false;
     }
@@ -114,11 +114,10 @@ function addAmazonSearch(bookstore) {
       enTitle = enTitleElement.textContent;
     }
   }
-
   const wrapper = document.createElement("div");
   wrapper.className = "looklook-wrapper";
   tagList.forEach((tagType) => {
-    console.log('tagType, enTitle', tagType, enTitle)
+    // console.log('tagType, enTitle', tagType, enTitle)
     if (tagType === "amazon") {
       addButton(wrapper, tagType, enTitle);
     } else {

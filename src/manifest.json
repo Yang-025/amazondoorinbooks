@@ -12,7 +12,7 @@
     "default_title": "都逛逛 | 網路書評參考",
     "default_popup": "popup.html"
   },
-  "permissions": ["activeTab", "scripting", "tabs", "declarativeContent"],
+  "permissions": ["scripting", "declarativeContent"],
   "background": {
     "service_worker": "background.js"
   },

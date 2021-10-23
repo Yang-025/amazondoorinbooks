@@ -3,7 +3,7 @@ document.getElementById("looklook_turnoff").addEventListener("click", turnOff);
 
 function handleToggle(toggle) {
   let wrapper = document.querySelectorAll(".looklook-wrapper");
-  console.log("turn toggle", toggle);
+  // console.log("turn toggle", toggle);
   if (toggle) {
     wrapper.forEach(i => i.style.display ='flex')
   } else {
