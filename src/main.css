@@ -1,0 +1,110 @@
+.looklook-wrapper {
+  display: flex;
+}
+
+.looklook-btn-search {
+  margin: 8px;
+  background-color: #fef4a9;
+  box-sizing: border-box;
+  color: #000000;
+  display: flex;
+  font-size: 1rem;
+  justify-content: center;
+  /* line-height: 1.75rem; */
+  padding: 0.5rem 1.5rem;
+  position: relative;
+  text-align: center;
+  width: fit-content;
+  position: relative;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+.looklook-btn-search:focus {
+  outline: 0;
+}
+
+.looklook-btn-search:after {
+  content: "";
+  position: absolute;
+  border: 1px solid #3a405a;
+  bottom: 4px;
+  left: 4px;
+  width: calc(100% - 1px);
+  height: calc(100% - 1px);
+}
+
+.looklook-btn-search:hover:after {
+  bottom: 2px;
+  left: 2px;
+}
+
+.looklook_wrapper {
+  width: 180px;
+  text-align: center;
+}
+
+.looklook_button-group {
+  display: flex;
+  justify-content: center;
+}
+
+.looklook_button-4 {
+  margin: 0 10px;
+  appearance: none;
+  background-color: #fafbfc;
+  border: 1px solid rgba(27, 31, 35, 0.15);
+  border-radius: 6px;
+  box-shadow: rgba(27, 31, 35, 0.04) 0 1px 0,
+    rgba(255, 255, 255, 0.25) 0 1px 0 inset;
+  box-sizing: border-box;
+  color: #24292e;
+  cursor: pointer;
+  font-size: 14px;
+  list-style: none;
+  padding: 6px;
+  position: relative;
+  transition: background-color 0.2s cubic-bezier(0.3, 0, 0.5, 1);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+  white-space: nowrap;
+  word-wrap: break-word;
+}
+
+.looklook_button-4:hover {
+  background-color: #f3f4f6;
+  text-decoration: none;
+  transition-duration: 0.1s;
+}
+
+.looklook_button-4:disabled {
+  background-color: #fafbfc;
+  border-color: rgba(27, 31, 35, 0.15);
+  color: #959da5;
+  cursor: default;
+}
+
+.looklook_button-4:active {
+  background-color: #edeff2;
+  box-shadow: rgba(225, 228, 232, 0.2) 0 1px 0 inset;
+  transition: none 0s;
+}
+
+.looklook_button-4:focus {
+  outline: 1px transparent;
+}
+
+.looklook_button-4:before {
+  display: none;
+}
+
+.looklook_button-4:-webkit-details-marker {
+  display: none;
+}
+
+.looklook_button-4.on {
+  background-color: #ffb732;
+  color: #ffffff;
+}

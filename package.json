@@ -1,0 +1,28 @@
+{
+  "name": "amazondoorinbooks",
+  "version": "1.0.0",
+  "description": "有時候在博客來買書，會想要參考Amazon的評價。     透過這個chrome extensions就可以快速增加一個超連結",
+  "main": "esbuild.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Yang-025/amazondoorinbooks.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Yang-025/amazondoorinbooks/issues"
+  },
+  "homepage": "https://github.com/Yang-025/amazondoorinbooks#readme",
+  "dependencies": {
+    "esbuild": "^0.13.6"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.15.7",
+    "@babel/core": "^7.15.8",
+    "babel-cli": "^6.26.0",
+    "babel-preset-minify": "^0.5.1"
+  }
+}

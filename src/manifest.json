@@ -1,0 +1,20 @@
+{
+  "name": "都逛逛 | 網路書評參考",
+  "description": "想看amazon的評價? 我幫你。 提供博客來、kobo、amazon 快速連結相互參考書評",
+  "version": "1.1",
+  "manifest_version": 3,
+  "icons": {
+    "16": "./icon/icon16.png",
+    "32": "./icon/icon32.png",
+    "180": "./icon/icon180.png"
+  },
+  "action": {
+    "default_title": "都逛逛 | 網路書評參考",
+    "default_popup": "popup.html"
+  },
+  "permissions": ["scripting", "declarativeContent"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "host_permissions": ["*://*.books.com.tw/*", "*://*.kobo.com/*"]
+}
