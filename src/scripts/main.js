@@ -1,3 +1,20 @@
+function ToCDB(str) {
+  var tmp = "";
+  for(var i=0;i<str.length;i++){
+      if (str.charCodeAt(i) == 12288){
+          tmp += String.fromCharCode(str.charCodeAt(i)-12256);
+          continue;
+      }
+      if(str.charCodeAt(i) > 65280 && str.charCodeAt(i) < 65375){
+          tmp += String.fromCharCode(str.charCodeAt(i)-65248);
+      }
+      else{
+          tmp += String.fromCharCode(str.charCodeAt(i));
+      }
+  }
+  return tmp
+}
+
 function amazonSearchButton(enTitle) {
   if (!enTitle) {
     return false;
@@ -55,6 +72,24 @@ function koboSearchButton(title) {
   return koboSearchSection;
 }
 
+function goodreadsSearchButton(title) {
+  const basegoodreadsUrl = `https://www.goodreads.com/search?utf8=%E2%9C%93&query=${title}`;
+  // const basegoodreadsUrl = `https://www.goodreads.com/search?q=${title}`;
+  const goodreadsSearchSection = document.createElement("div");
+  goodreadsSearchSection.classList.add("looklook-btn-search");
+  goodreadsSearchSection.id = "goodreads-search";
+  goodreadsSearchSection.innerHTML = "goodreads";
+  goodreadsSearchSection.onclick = function () {
+    const win = window.open(basegoodreadsUrl, "_blank");
+    if (win) {
+      win.focus();
+    } else {
+      alert("Please allow popups for this website");
+    }
+  };
+  return goodreadsSearchSection;
+}
+
 function addButton(wrapper, tagType, title) {
   if (!title || !wrapper) {
     return;
@@ -71,6 +106,10 @@ function addButton(wrapper, tagType, title) {
     const koboBtnElement = koboSearchButton(title);
     wrapper.appendChild(koboBtnElement);
   }
+  if (tagType === "goodreads") {
+    const goodreadsBtnElement = goodreadsSearchButton(title);
+    wrapper.appendChild(goodreadsBtnElement);
+  }
 }
 
 /**
@@ -80,7 +119,7 @@ function addAmazonSearch(bookstore) {
   let bookTitleSection;
   let title;
   let enTitle;
-  let tagList = ["amazon", "books", "kobo"];
+  let tagList = ["amazon", "goodreads", "books", "kobo"];
   if (bookstore === "books") {
     tagList = tagList.filter((x) => x !== "books");
     bookTitleSection = document.querySelector(".type02_p002");
@@ -99,7 +138,9 @@ function addAmazonSearch(bookstore) {
 
   if (bookstore === "kobo") {
     tagList = tagList.filter((x) => x !== "kobo");
-    bookTitleSection = document.querySelector(".support.title-widget .item-info");
+    bookTitleSection = document.querySelector(
+      ".support.title-widget .item-info"
+    );
     if (!bookTitleSection) {
       return false;
     }
@@ -118,7 +159,7 @@ function addAmazonSearch(bookstore) {
   wrapper.className = "looklook-wrapper";
   tagList.forEach((tagType) => {
     // console.log('tagType, enTitle', tagType, enTitle)
-    if (tagType === "amazon") {
+    if (tagType === "amazon" | tagType === "goodreads") {
       addButton(wrapper, tagType, enTitle);
     } else {
       addButton(wrapper, tagType, title);
@@ -128,5 +169,3 @@ function addAmazonSearch(bookstore) {
     bookTitleSection.appendChild(wrapper);
   }
 }
-
-

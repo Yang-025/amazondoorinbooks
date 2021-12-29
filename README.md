@@ -28,7 +28,7 @@ Step4. 點選左上角載入未封裝項目，選擇 Step1 下載的檔案
 ## Build
 
 ```
-rm -rf public
+rm -rf public.zip
 zip -r public.zip src
 ```
 
