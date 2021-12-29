@@ -1,5 +1,6 @@
 .looklook-wrapper {
   display: flex;
+  flex-wrap: wrap;
 }
 
 .looklook-btn-search {

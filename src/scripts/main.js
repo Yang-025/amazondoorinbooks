@@ -1,18 +1,17 @@
 function ToCDB(str) {
   var tmp = "";
-  for(var i=0;i<str.length;i++){
-      if (str.charCodeAt(i) == 12288){
-          tmp += String.fromCharCode(str.charCodeAt(i)-12256);
-          continue;
-      }
-      if(str.charCodeAt(i) > 65280 && str.charCodeAt(i) < 65375){
-          tmp += String.fromCharCode(str.charCodeAt(i)-65248);
-      }
-      else{
-          tmp += String.fromCharCode(str.charCodeAt(i));
-      }
+  for (var i = 0; i < str.length; i++) {
+    if (str.charCodeAt(i) == 12288) {
+      tmp += String.fromCharCode(str.charCodeAt(i) - 12256);
+      continue;
+    }
+    if (str.charCodeAt(i) > 65280 && str.charCodeAt(i) < 65375) {
+      tmp += String.fromCharCode(str.charCodeAt(i) - 65248);
+    } else {
+      tmp += String.fromCharCode(str.charCodeAt(i));
+    }
   }
-  return tmp
+  return tmp;
 }
 
 function amazonSearchButton(enTitle) {
@@ -72,6 +71,23 @@ function koboSearchButton(title) {
   return koboSearchSection;
 }
 
+function readmooSearchButton(title) {
+  const basereadmooUrl = `https://readmoo.com/search/keyword?q=${title}&kw=${title}&page=1&st=true`;
+  const readmooSearchSection = document.createElement("div");
+  readmooSearchSection.classList.add("looklook-btn-search");
+  readmooSearchSection.id = "readmoo-search";
+  readmooSearchSection.innerHTML = "readmoo";
+  readmooSearchSection.onclick = function () {
+    const win = window.open(basereadmooUrl, "_blank");
+    if (win) {
+      win.focus();
+    } else {
+      alert("Please allow popups for this website");
+    }
+  };
+  return readmooSearchSection;
+}
+
 function goodreadsSearchButton(title) {
   const basegoodreadsUrl = `https://www.goodreads.com/search?utf8=%E2%9C%93&query=${title}`;
   // const basegoodreadsUrl = `https://www.goodreads.com/search?q=${title}`;
@@ -106,6 +122,11 @@ function addButton(wrapper, tagType, title) {
     const koboBtnElement = koboSearchButton(title);
     wrapper.appendChild(koboBtnElement);
   }
+
+  if (tagType === "readmoo") {
+    const readmooBtnElement = readmooSearchButton(title);
+    wrapper.appendChild(readmooBtnElement);
+  }
   if (tagType === "goodreads") {
     const goodreadsBtnElement = goodreadsSearchButton(title);
     wrapper.appendChild(goodreadsBtnElement);
@@ -116,10 +137,11 @@ function addButton(wrapper, tagType, title) {
  * 如果有英文書名，就在下方加上一個連結，連結點下去可以搜尋amazon的資訊
  */
 function addAmazonSearch(bookstore) {
+
   let bookTitleSection;
   let title;
   let enTitle;
-  let tagList = ["amazon", "goodreads", "books", "kobo"];
+  let tagList = ["amazon", "goodreads", "books", "kobo", "readmoo"];
   if (bookstore === "books") {
     tagList = tagList.filter((x) => x !== "books");
     bookTitleSection = document.querySelector(".type02_p002");
@@ -155,11 +177,32 @@ function addAmazonSearch(bookstore) {
       enTitle = enTitleElement.textContent;
     }
   }
+
+  if (bookstore === "readmoo") {
+    tagList = tagList.filter((x) => x !== "readmoo");
+    bookTitleSection = document.querySelector(
+      ".book-info-text > .book-meta-box"
+    );
+    if (!bookTitleSection) {
+      return false;
+    }
+    let titleElement = bookTitleSection.querySelector(".book-detail-title");
+    if (titleElement) {
+      title = titleElement.textContent;
+    }
+    let enTitleElement = bookTitleSection.querySelector(
+      ".book-detail-original-title"
+    );
+    if (enTitleElement) {
+      enTitle = enTitleElement.textContent;
+    }
+  }
+
   const wrapper = document.createElement("div");
   wrapper.className = "looklook-wrapper";
   tagList.forEach((tagType) => {
     // console.log('tagType, enTitle', tagType, enTitle)
-    if (tagType === "amazon" | tagType === "goodreads") {
+    if (tagType === "amazon" || tagType === "goodreads") {
       addButton(wrapper, tagType, enTitle);
     } else {
       addButton(wrapper, tagType, title);

@@ -23,7 +23,7 @@ Step2. 搜尋 [都逛逛 | 網路書評參考](https://chrome.google.com/webstor
 Step1. 下載檔案  
 Step2. 在 chrome 瀏覽器前往`chrome://extensions/`  
 Step3. 將右上角"開啟開發人員模式"打開  
-Step4. 點選左上角載入未封裝項目，選擇 Step1 下載的檔案
+Step4. 點選左上角載入未封裝項目，選擇 src資料夾
 
 ## Build
 
